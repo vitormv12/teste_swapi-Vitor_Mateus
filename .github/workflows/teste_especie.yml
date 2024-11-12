@@ -1,0 +1,22 @@
+nome : Teste SWAPI - Espécie existente
+
+em : [push, pull_request]
+
+empregos :
+  teste :
+    executa em : ubuntu-latest
+    
+    passos :
+      - nome : Repositório de checkout
+        usos : ações/checkout@v2
+
+      - nome : Configurar Node.js
+        usos : ações/setup-node@v2
+        com :
+          versão do nó : ' 16 '
+
+      - nome : Instalar dependências
+        executar : npm install
+
+      - nome : Rodar teste para espécie existente
+        run : npx jest -t "Retorna informações de uma espécie existente"
