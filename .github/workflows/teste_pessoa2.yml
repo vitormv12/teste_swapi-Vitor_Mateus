@@ -1,22 +1,22 @@
-nome : Teste SWAPI - Pessoa inexistente
+name: Teste SWAPI - Pessoa inexistente
 
-em : [push, pull_request]
+on: [push, pull_request]
 
-empregos :
-  teste :
-    executa em : ubuntu-latest
+jobs:
+  test:
+    runs-on: ubuntu-latest
     
-    passos :
-      - nome : Repositório de checkout
-        usos : ações/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - nome : Configurar Node.js
-        usos : ações/setup-node@v2
-        com :
-          versão do nó : ' 16 '
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-      - nome : Instalar dependências
-        executar : npm install
+      - name: Instalar dependências
+        run: npm install
 
-      - nome : Rodar teste para pessoa inexistente
-        run : npx jest -t "Retorna erro 404 ao pesquisar uma pessoa inexistente"
+      - name: Rodar teste para pessoa inexistente
+        run: npx jest -t "Retorna erro 404 ao pesquisar uma pessoa inexistente"
